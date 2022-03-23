@@ -135,6 +135,12 @@ set track or thumb background color
 |track-radius|set track raidus|
 |thumb-radius|set thumb radius|
 
+- rounded
+
+`scrollbar-rounded`
+
+Make thumb and track have rounded corners
+
 **Attention,** if it ends with number, the preset will use numberToUnit to generate length with number as params, Otherwise it will use the captured length information directly
 
 for example:

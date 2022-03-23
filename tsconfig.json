@@ -9,6 +9,17 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
-  }
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "unocss-preset-scrollbar": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "./src/**/*.ts", "./test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules", "dist"
+  ]
 }
