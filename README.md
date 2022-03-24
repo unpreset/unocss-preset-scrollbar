@@ -1,6 +1,6 @@
 # unocss-preset-scrollbar
 
-[![NPM version](https://img.shields.io/npm/v/unocss-preset-scrollbar?color=a1b858&label=)](https://www.npmjs.com/package/unocss-preset-scrollbar)
+[![NPM version](https://img.shields.io/npm/v/unocss-preset-scrollbar?color=a1b858&label=)](https://www.npmjs.com/package/unocss-preset-scrollbar) ![npm](https://img.shields.io/npm/dw/unocss-preset-scrollbar)
 
 a unocss preset for scrollbar, here is a [demo](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=src/components/HelloWorld.vue)
 
@@ -141,7 +141,7 @@ set track or thumb background color
 
 for example:
 
-- `scrollbar-w-4` will be `--scrollbar-width: 1px`
+- `scrollbar-w-4` will be `--scrollbar-width: 1rem`
 - `scrollbar-w-4px` will be `--scrollbar-width: 4px`
 - `scrollbar-w-4rem` will be `--scrollbar-width: 4rem`
 
