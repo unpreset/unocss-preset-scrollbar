@@ -14,12 +14,13 @@ pnpm add unocss-preset-scrollbar unocss -D # with pnpm
 
 ```ts
 // unocss.config.ts
-import { defineConfig, presetUno } from 'unocss'
+import { defineConfig, presetAttributify, presetUno } from 'unocss'
 import { presetScrollbar } from 'unocss-preset-scrollbar'
 
 export default defineConfig({
   presets: [
     presetUno(),
+    presetAttributify(),
     presetScrollbar({
       // config
     }),
@@ -70,6 +71,14 @@ it will generate below css:
 .scrollbar-radius-thumb-4{--scrollbar-thumb-raidus:1rem;}
 .scrollbar-radius-track-4{--scrollbar-track-raidus:1rem;}
 .scrollbar-w-4px{--scrollbar-width:4px;}"
+```
+
+you can also use `Attributify Mode`:
+
+```html
+<div
+  scrollbar="~ rounded"
+  />
 ```
 
 ## Configurations

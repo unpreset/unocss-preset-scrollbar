@@ -43,6 +43,12 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
+  "peerDependencies": {
+    "unocss": "^0.29.5"
+  },
+  "dependencies": {
+    "@unocss/preset-mini": "^0.29.5"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.9",
     "@antfu/ni": "^0.13.2",
@@ -58,11 +64,5 @@
     "unocss": "^0.29.5",
     "vite": "^2.8.6",
     "vitest": "^0.7.7"
-  },
-  "peerDependencies": {
-    "unocss": "^0.29.5"
-  },
-  "dependencies": {
-    "@unocss/preset-mini": "^0.29.5"
   }
 }

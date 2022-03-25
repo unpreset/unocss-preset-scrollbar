@@ -1,8 +1,6 @@
 import type { Preset } from 'unocss'
-import {
-  escapeSelector as e,
-} from 'unocss'
 import { colorResolver } from '@unocss/preset-mini/utils'
+import { toEscapedSelector as e } from './utils'
 const defaultOption: Required<PresetScrollbarDefaultOption> = {
   scrollbarWidth: '8px',
   scrollbarHeight: '8px',
@@ -42,40 +40,39 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
     name: 'unocss-preset-scrollbar',
     rules: [
       [/^scrollbar$/, ([_], { rawSelector }) => {
-        // return ''
         return `
-          .${e(rawSelector)} {
-            --scrollbar-track: ${config.scrollbarTrackColor};
-            --scrollbar-thumb: ${config.scrollbarThumbColor};
-            --scrollbar-width: ${config.scrollbarWidth};
-            --scrollbar-height: ${config.scrollbarHeight};
-            --scrollbar-track-raidus: ${config.scrollbarTrackRadius};
-            --scrollbar-thumb-raidus: ${config.scrollbarThumbRadius};
-            overflow: auto;
-            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-          }
-          .${e(rawSelector)}::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
-          }
-          .${e(rawSelector)}::-webkit-scrollbar-thumb {
-            background: var(--scrollbar-thumb);
-          }
-          .${e(rawSelector)}::-webkit-scrollbar {
-            width: var(--scrollbar-width);
-            height: var(--scrollbar-height);
-          }
-        `
+  ${e(rawSelector)} {
+    --scrollbar-track: ${config.scrollbarTrackColor};
+    --scrollbar-thumb: ${config.scrollbarThumbColor};
+    --scrollbar-width: ${config.scrollbarWidth};
+    --scrollbar-height: ${config.scrollbarHeight};
+    --scrollbar-track-raidus: ${config.scrollbarTrackRadius};
+    --scrollbar-thumb-raidus: ${config.scrollbarThumbRadius};
+    overflow: auto;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+  ${e(rawSelector)}::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ${e(rawSelector)}::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+  }
+  ${e(rawSelector)}::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-height);
+  }
+`
       },
       ],
       [/^scrollbar-rounded$/, ([_], { rawSelector }) => {
         return `
-          .${e(rawSelector)}::-webkit-scrollbar-track {
-              border-radius: var(--scrollbar-track-raidus);
-            }
-          .${e(rawSelector)}::-webkit-scrollbar-thumb {
-            border-radius: var(--scrollbar-thumb-raidus);
-          }
-        `
+  ${e(rawSelector)}::-webkit-scrollbar-track {
+      border-radius: var(--scrollbar-track-raidus);
+    }
+  ${e(rawSelector)}::-webkit-scrollbar-thumb {
+    border-radius: var(--scrollbar-thumb-raidus);
+  }
+`
       }],
       [/^scrollbar-thumb-color-(.+)$/, colorResolver('--scrollbar-thumb', 'scrollbar-thumb')],
       [/^scrollbar-track-color-(.+)$/, colorResolver('--scrollbar-track', 'scrollbar-track')],
