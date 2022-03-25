@@ -1,6 +1,8 @@
 # unocss-preset-scrollbar
 
-[![NPM version](https://img.shields.io/npm/v/unocss-preset-scrollbar?color=a1b858&label=)](https://www.npmjs.com/package/unocss-preset-scrollbar)
+[![NPM version](https://img.shields.io/npm/v/unocss-preset-scrollbar?color=a1b858&label=)](https://www.npmjs.com/package/unocss-preset-scrollbar) ![npm](https://img.shields.io/npm/dw/unocss-preset-scrollbar)
+
+a unocss preset for scrollbar, here is a [demo](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=src/components/HelloWorld.vue)
 
 ## Installation
 
@@ -144,19 +146,20 @@ set track or thumb background color
 |track-radius|set track raidus|
 |thumb-radius|set thumb radius|
 
+**Attention,** if it ends with number, the preset will use numberToUnit to generate length with number as params, Otherwise it will use the captured length information directly
+
+for example:
+
+- `scrollbar-w-4` will be `--scrollbar-width: 1rem`
+- `scrollbar-w-4px` will be `--scrollbar-width: 4px`
+- `scrollbar-w-4rem` will be `--scrollbar-width: 4rem`
+
 - rounded
 
 `scrollbar-rounded`
 
 Make thumb and track have rounded corners
 
-**Attention,** if it ends with number, the preset will use numberToUnit to generate length with number as params, Otherwise it will use the captured length information directly
-
-for example:
-
-- `scrollbar-w-4` will be `--scrollbar-width: 1px`
-- `scrollbar-w-4px` will be `--scrollbar-width: 4px`
-- `scrollbar-w-4rem` will be `--scrollbar-width: 4rem`
 ## License
 
 [MIT](./LICENSE) License © 2021 [kkopite](https://github.com/action-hong)
