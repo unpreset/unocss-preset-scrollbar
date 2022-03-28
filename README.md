@@ -128,13 +128,13 @@ will generate `--scrollbar-width: 4px`
 
 ## Utilities
 
-- color
+### color
 
 `scrollbar-(track|thumb)-<color>`
 
 set track or thumb background color
 
-- size
+### size
 
 `scrollbar-(radius|w|h|track-radius|thumb-radius)-(\d+?)([a-zA-Z]*?)`
 
@@ -149,16 +149,19 @@ set track or thumb background color
 **Attention,** if it ends with number, the preset will use numberToUnit to generate length with number as params, Otherwise it will use the captured length information directly
 
 for example:
-
 - `scrollbar-w-4` will be `--scrollbar-width: 1rem`
 - `scrollbar-w-4px` will be `--scrollbar-width: 4px`
 - `scrollbar-w-4rem` will be `--scrollbar-width: 4rem`
 
-- rounded
+### rounded
 
 `scrollbar-rounded`
 
 Make thumb and track have rounded corners
+
+## other
+
+base [starter-ts](https://github.com/antfu/starter-ts)
 
 ## License
 
