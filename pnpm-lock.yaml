@@ -37,6 +37,14 @@ importers:
       vite: 2.8.6
       vitest: 0.7.7
 
+  playground:
+    specifiers:
+      typescript: ^4.5.4
+      vite: ^2.8.0
+    devDependencies:
+      typescript: 4.6.2
+      vite: 2.8.6
+
 packages:
 
   /@antfu/eslint-config-basic/0.18.9_eslint@8.11.0:
