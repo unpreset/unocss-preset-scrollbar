@@ -60,7 +60,8 @@ describe('scrollbar', () => {
   scrollbar="~ rounded w-4px radius-2 radius-track-4 radius-thumb-4">
 </div>
 `)
-    // FIXME: 这里会出现.w-4px{width:4px;}, .rounded{border-radius:0.25rem;} 也很奇怪
+    // FIXME: a bug in unocss?
+    // will generate two useless rules .w-4px{width:4px;}, .rounded{border-radius:0.25rem;}
     expect(css).toMatchSnapshot()
   })
 })

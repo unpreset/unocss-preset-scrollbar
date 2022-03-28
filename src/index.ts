@@ -1,6 +1,6 @@
 import type { Preset } from 'unocss'
 import { colorResolver } from '@unocss/preset-mini/utils'
-import { toEscapedSelector as e } from './utils'
+import { toEscapedSelector as e } from 'unocss'
 const defaultOption: Required<PresetScrollbarDefaultOption> = {
   scrollbarWidth: '8px',
   scrollbarHeight: '8px',
