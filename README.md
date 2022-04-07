@@ -7,9 +7,7 @@ a unocss preset for scrollbar, here is a [demo](https://stackblitz.com/edit/vite
 ## Installation
 
 ```bash
-npm i unocss-preset-scrollbar unocss --save-dev # with npm
-yarn add unocss-preset-scrollbar unocss -D # with yarn
-pnpm add unocss-preset-scrollbar unocss -D # with pnpm
+npm i unocss-preset-scrollbar unocss -D
 ```
 
 ## Usage
@@ -32,7 +30,7 @@ export default defineConfig({
 
 ```html
 <div 
-  class="scrollbar scrollbar-rounded scrollbar-w-4px scrollbar-radius-2 scrollbar-radius-track-4 scrollbar-radius-thumb-4"
+  class="scrollbar scrollbar-rounded scrollbar-w-4px scrollbar-radius-2 scrollbar-track-radius-4 scrollbar-thumb-radius-4"
 />
 ```
 
@@ -70,8 +68,8 @@ it will generate below css:
 }
 
 .scrollbar-radius-2{--scrollbar-track-raidus:0.5rem;--scrollbar-thumb-raidus:0.5rem;}
-.scrollbar-radius-thumb-4{--scrollbar-thumb-raidus:1rem;}
-.scrollbar-radius-track-4{--scrollbar-track-raidus:1rem;}
+.scrollbar-thumb-radius-4{--scrollbar-thumb-raidus:1rem;}
+.scrollbar-track-radius-4{--scrollbar-track-raidus:1rem;}
 .scrollbar-w-4px{--scrollbar-width:4px;}"
 ```
 
