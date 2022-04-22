@@ -43,8 +43,8 @@ it will generate below css:
   --scrollbar-thumb: #ddd;
   --scrollbar-width: 8px;
   --scrollbar-height: 8px;
-  --scrollbar-track-raidus: 4px;
-  --scrollbar-thumb-raidus: 4px;
+  --scrollbar-track-radius: 4px;
+  --scrollbar-thumb-radius: 4px;
   overflow: auto;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
@@ -61,15 +61,15 @@ it will generate below css:
 
 
 .scrollbar-rounded::-webkit-scrollbar-track {
-    border-radius: var(--scrollbar-track-raidus);
+    border-radius: var(--scrollbar-track-radius);
   }
 .scrollbar-rounded::-webkit-scrollbar-thumb {
-  border-radius: var(--scrollbar-thumb-raidus);
+  border-radius: var(--scrollbar-thumb-radius);
 }
 
-.scrollbar-radius-2{--scrollbar-track-raidus:0.5rem;--scrollbar-thumb-raidus:0.5rem;}
-.scrollbar-thumb-radius-4{--scrollbar-thumb-raidus:1rem;}
-.scrollbar-track-radius-4{--scrollbar-track-raidus:1rem;}
+.scrollbar-radius-2{--scrollbar-track-radius:0.5rem;--scrollbar-thumb-radius:0.5rem;}
+.scrollbar-thumb-radius-4{--scrollbar-thumb-radius:1rem;}
+.scrollbar-track-radius-4{--scrollbar-track-radius:1rem;}
 .scrollbar-w-4px{--scrollbar-width:4px;}"
 ```
 
@@ -90,7 +90,7 @@ const defaultConfig = {
   // https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar
   scrollbarWidth: '8px',
   scrollbarHeight: '8px',
-  // scrollbar thumb and track raidus
+  // scrollbar thumb and track radius
   scrollbarTrackRadius: '4px',
   scrollbarThumbRadius: '4px',
   // thumb, track background color
@@ -98,6 +98,8 @@ const defaultConfig = {
   scrollbarThumbColor: '#ddd',
   // number to length
   numberToUnit: value => `${value / 4}rem`,
+  // css variable prefix
+  varPrefix: '',
 }
 ```
 
@@ -138,10 +140,10 @@ set track or thumb background color
 
 |type|description|
 |--|--|
-|radius|set thumb raidus and track radius|
+|radius|set thumb radius and track radius|
 |w|[set scrollbar width](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar)|
 |h|[set scrollbar height](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar)|
-|track-radius|set track raidus|
+|track-radius|set track radius|
 |thumb-radius|set thumb radius|
 
 **Attention,** if it ends with number, the preset will use numberToUnit to generate length with number as params, Otherwise it will use the captured length information directly
