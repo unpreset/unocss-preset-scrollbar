@@ -122,8 +122,8 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
   }
 `
       }],
-      [/^scrollbar-thumb-color-(.+)$/, colorResolver(resolveVar('thumb'), 'scrollbar-thumb')],
-      [/^scrollbar-track-color-(.+)$/, colorResolver(resolveVar('track'), 'scrollbar-track')],
+      [/^scrollbar-thumb-color-(.+)$/, colorResolver(resolveVar('thumb'), 'scrollbar-thumb'), { autocomplete: 'scrollbar-thumb-color-$colors' }],
+      [/^scrollbar-track-color-(.+)$/, colorResolver(resolveVar('track'), 'scrollbar-track'), { autocomplete: 'scrollbar-thumb-track-$colors' }],
       [numberVarRegex, ([_, type, value, unit]) => {
         const val = unit ? value + unit : config.numberToUnit(parseInt(value))
         const vars = customRules[type as keyof typeof customRules]
@@ -132,7 +132,20 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
           acc[v] = val
           return acc
         }, {})
-      }],
+      }, { autocomplete: `scrollbar-(${Object.keys(customRules).join('|')})-<num>` }],
     ],
+    // autocomplete: {
+    //   templates: [async(input) => {
+    //     if (input.startsWith('scrollbar')) {
+    //       return [
+    //         ...Object.keys(customRules).map(v => `scrollbar-${v}`),
+    //         'scrollbar-rounded',
+    //       ]
+    //     }
+    //     return []
+    //   },
+    //   ],
+
+    // },
   }
 }
