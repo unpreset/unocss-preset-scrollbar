@@ -64,4 +64,22 @@ describe('scrollbar', () => {
     // will generate two useless rules .w-4px{width:4px;}, .rounded{border-radius:0.25rem;}
     expect(css).toMatchSnapshot()
   })
+
+  it('var prefix', async() => {
+    const generator = createGenerator({
+      presets: [
+        presetUno(),
+        presetScrollbar({
+          varPrefix: 'my-custom-prefix',
+        }),
+      ],
+    })
+    const { css } = await generator.generate([
+      'scrollbar',
+      'scrollbar-w-1',
+      'scrollbar-thumb-radius-2px',
+      'scrollbar-rounded',
+    ].join(' '))
+    expect(css).toMatchSnapshot()
+  })
 })

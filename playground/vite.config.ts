@@ -9,7 +9,9 @@ export default defineConfig({
       presets: [
         presetUno(),
         presetAttributify(),
-        presetScrollbar(),
+        presetScrollbar({
+          varPrefix: 'un',
+        }),
       ],
     }),
   ],

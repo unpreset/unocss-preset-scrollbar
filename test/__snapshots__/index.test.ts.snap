@@ -2,7 +2,7 @@
 
 exports[`scrollbar > custom value to unit 1`] = `
 "/* layer: default */
-.scrollbar-thumb-radius-2px{--scrollbar-thumb-raidus:2px;}
+.scrollbar-thumb-radius-2px{--scrollbar-thumb-radius:2px;}
 .scrollbar-w-1{--scrollbar-width:2px;}"
 `;
 
@@ -14,8 +14,8 @@ exports[`scrollbar > scrollbar 1`] = `
     --scrollbar-thumb: #ddd;
     --scrollbar-width: 8px;
     --scrollbar-height: 8px;
-    --scrollbar-track-raidus: 4px;
-    --scrollbar-thumb-raidus: 4px;
+    --scrollbar-track-radius: 4px;
+    --scrollbar-thumb-radius: 4px;
     overflow: auto;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
@@ -32,13 +32,13 @@ exports[`scrollbar > scrollbar 1`] = `
 
 
   .scrollbar-rounded::-webkit-scrollbar-track {
-      border-radius: var(--scrollbar-track-raidus);
-    }
+    border-radius: var(--scrollbar-track-radius);
+  }
   .scrollbar-rounded::-webkit-scrollbar-thumb {
-    border-radius: var(--scrollbar-thumb-raidus);
+    border-radius: var(--scrollbar-thumb-radius);
   }
 
-.scrollbar-radius-2{--scrollbar-track-raidus:0.5rem;--scrollbar-thumb-raidus:0.5rem;}
+.scrollbar-radius-2{--scrollbar-track-radius:0.5rem;--scrollbar-thumb-radius:0.5rem;}
 .scrollbar-w-4px{--scrollbar-width:4px;}"
 `;
 
@@ -62,8 +62,8 @@ exports[`scrollbar > should work in atributify mode 1`] = `
     --scrollbar-thumb: #ddd;
     --scrollbar-width: 8px;
     --scrollbar-height: 8px;
-    --scrollbar-track-raidus: 4px;
-    --scrollbar-thumb-raidus: 4px;
+    --scrollbar-track-radius: 4px;
+    --scrollbar-thumb-radius: 4px;
     overflow: auto;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
@@ -84,8 +84,8 @@ exports[`scrollbar > should work in atributify mode 1`] = `
     --scrollbar-thumb: #ddd;
     --scrollbar-width: 8px;
     --scrollbar-height: 8px;
-    --scrollbar-track-raidus: 4px;
-    --scrollbar-thumb-raidus: 4px;
+    --scrollbar-track-radius: 4px;
+    --scrollbar-thumb-radius: 4px;
     overflow: auto;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
@@ -102,12 +102,48 @@ exports[`scrollbar > should work in atributify mode 1`] = `
 
 
   [scrollbar~=\\"rounded\\"]::-webkit-scrollbar-track {
-      border-radius: var(--scrollbar-track-raidus);
-    }
+    border-radius: var(--scrollbar-track-radius);
+  }
   [scrollbar~=\\"rounded\\"]::-webkit-scrollbar-thumb {
-    border-radius: var(--scrollbar-thumb-raidus);
+    border-radius: var(--scrollbar-thumb-radius);
   }
 
-[scrollbar~=\\"radius-2\\"]{--scrollbar-track-raidus:0.5rem;--scrollbar-thumb-raidus:0.5rem;}
+[scrollbar~=\\"radius-2\\"]{--scrollbar-track-radius:0.5rem;--scrollbar-thumb-radius:0.5rem;}
 [scrollbar~=\\"w-4px\\"]{--scrollbar-width:4px;}"
+`;
+
+exports[`scrollbar > var prefix 1`] = `
+"/* layer: default */
+
+  .scrollbar {
+    --my-custom-prefix-scrollbar-track: #f5f5f5;
+    --my-custom-prefix-scrollbar-thumb: #ddd;
+    --my-custom-prefix-scrollbar-width: 8px;
+    --my-custom-prefix-scrollbar-height: 8px;
+    --my-custom-prefix-scrollbar-track-radius: 4px;
+    --my-custom-prefix-scrollbar-thumb-radius: 4px;
+    overflow: auto;
+    scrollbar-color: var(--my-custom-prefix-scrollbar-thumb) var(--my-custom-prefix-scrollbar-track);
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    background: var(--my-custom-prefix-scrollbar-track);
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: var(--my-custom-prefix-scrollbar-thumb);
+  }
+  .scrollbar::-webkit-scrollbar {
+    width: var(--my-custom-prefix-scrollbar-width);
+    height: var(--my-custom-prefix-scrollbar-height);
+  }
+
+
+  .scrollbar-rounded::-webkit-scrollbar-track {
+    border-radius: var(--my-custom-prefix-scrollbar-track-radius);
+  }
+  .scrollbar-rounded::-webkit-scrollbar-thumb {
+    border-radius: var(--my-custom-prefix-scrollbar-thumb-radius);
+  }
+
+.scrollbar-thumb-radius-2px{--my-custom-prefix-scrollbar-thumb-radius:2px;}
+.scrollbar-w-1{--my-custom-prefix-scrollbar-width:0.25rem;}"
 `;
