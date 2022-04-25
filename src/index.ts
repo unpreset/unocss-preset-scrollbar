@@ -111,6 +111,7 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
   }
 `
       },
+      { autocomplete: 'scrollbar' },
       ],
       [/^scrollbar-rounded$/, ([_], { rawSelector }) => {
         return `
@@ -121,9 +122,9 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
     border-radius: var(${resolveVar('thumb-radius')});
   }
 `
-      }],
+      }, { autocomplete: 'scrollbar-rounded' }],
       [/^scrollbar-thumb-color-(.+)$/, colorResolver(resolveVar('thumb'), 'scrollbar-thumb'), { autocomplete: 'scrollbar-thumb-color-$colors' }],
-      [/^scrollbar-track-color-(.+)$/, colorResolver(resolveVar('track'), 'scrollbar-track'), { autocomplete: 'scrollbar-thumb-track-$colors' }],
+      [/^scrollbar-track-color-(.+)$/, colorResolver(resolveVar('track'), 'scrollbar-track'), { autocomplete: 'scrollbar-track-color-$colors' }],
       [numberVarRegex, ([_, type, value, unit]) => {
         const val = unit ? value + unit : config.numberToUnit(parseInt(value))
         const vars = customRules[type as keyof typeof customRules]
