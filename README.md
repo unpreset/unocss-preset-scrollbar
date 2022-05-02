@@ -37,40 +37,18 @@ export default defineConfig({
 it will generate below css:
 
 ```css
-/* layer: default */      
-.scrollbar {
-  --scrollbar-track: #f5f5f5;
-  --scrollbar-thumb: #ddd;
-  --scrollbar-width: 8px;
-  --scrollbar-height: 8px;
-  --scrollbar-track-radius: 4px;
-  --scrollbar-thumb-radius: 4px;
-  overflow: auto;
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-}
-.scrollbar::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-.scrollbar::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-}
-.scrollbar::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-  height: var(--scrollbar-height);
-}
-
-
-.scrollbar-rounded::-webkit-scrollbar-track {
-    border-radius: var(--scrollbar-track-radius);
-  }
-.scrollbar-rounded::-webkit-scrollbar-thumb {
-  border-radius: var(--scrollbar-thumb-radius);
-}
-
+/* layer: shortcuts */
+.scrollbar::-webkit-scrollbar{width:var(--scrollbar-width);height:var(--scrollbar-height);}
+.scrollbar{overflow:auto;scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);--scrollbar-track:#f5f5f5;--scrollbar-thumb:#ddd;--scrollbar-width:8px;--scrollbar-height:8px;--scrollbar-track-radius:4px;--scrollbar-thumb-radius:4px;}
+.scrollbar-rounded::-webkit-scrollbar-thumb{border-radius:var(--scrollbar-thumb-radius);}
+.scrollbar-rounded::-webkit-scrollbar-track{border-radius:var(--scrollbar-track-radius);}
+.scrollbar::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb);}
+.scrollbar::-webkit-scrollbar-track{background-color:var(--scrollbar-track);}
+/* layer: default */
 .scrollbar-radius-2{--scrollbar-track-radius:0.5rem;--scrollbar-thumb-radius:0.5rem;}
 .scrollbar-thumb-radius-4{--scrollbar-thumb-radius:1rem;}
 .scrollbar-track-radius-4{--scrollbar-track-radius:1rem;}
-.scrollbar-w-4px{--scrollbar-width:4px;}"
+.scrollbar-w-4px{--scrollbar-width:4px;}
 ```
 
 you can also use `Attributify Mode`:
@@ -78,30 +56,48 @@ you can also use `Attributify Mode`:
 ```html
 <div
   scrollbar="~ rounded"
-  />
+/>
+```
+
+or use `@apply`
+
+```diff
+import { defineConfig, presetAttributify, presetUno, transformerDirectives } from 'unocss'
+
+import { presetScrollbar } from '../src'
+
+export default defineConfig({
+  presets: [
+    presetUno(),
+    presetAttributify(),
+    presetScrollbar({
+    }),
+  ],
++  transformers: [
++    transformerDirectives(),
++  ],
+})
+```
+
+```css
+.my-custom-scrollbar {
+  @apply scrollbar scrollbar-rounded
+}
 ```
 
 ## Configurations
 
-```ts
-// this is preset default value
-const defaultConfig = {
-  // scrollbar width and height
-  // https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar
-  scrollbarWidth: '8px',
-  scrollbarHeight: '8px',
-  // scrollbar thumb and track radius
-  scrollbarTrackRadius: '4px',
-  scrollbarThumbRadius: '4px',
-  // thumb, track background color
-  scrollbarTrackColor: '#f5f5f5',
-  scrollbarThumbColor: '#ddd',
-  // number to length
-  numberToUnit: value => `${value / 4}rem`,
-  // css variable prefix
-  varPrefix: '',
-}
-```
+|Field|Default|Description|
+|--|--|--|
+|`scrollbarWidth`|`8px`|scrollbar width|
+|`scrollbarHeight`|`8px`|scrollbar height|
+|`scrollbarTrackRadius`|`4px`|scrollbar track radius|
+|`scrollbarThumbRadius`|`4px`|scrollbar thumb radius|
+|`scrollbarTrackColor`|`#f5f5f5`| scrollbar track background color|
+|`scrollbarThumbColor`|`#ddd`| scrollbar thumb background color|
+|`numberToUnit`|``value => `${value / 4}rem` ``| number to unit
+|`varPrefix`|`''`|the css variable prefix of this preset 
+
 
 for example
 

@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetUno } from 'unocss'
+import { defineConfig, presetAttributify, presetUno, transformerDirectives } from 'unocss'
 
 import { presetScrollbar } from '../src'
 
@@ -9,5 +9,8 @@ export default defineConfig({
     presetScrollbar({
       varPrefix: 'un',
     }),
+  ],
+  transformers: [
+    transformerDirectives(),
   ],
 })
