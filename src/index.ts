@@ -1,6 +1,6 @@
 import type { Preset } from 'unocss'
 import { colorResolver, handler } from '@unocss/preset-mini/utils'
-import { toEscapedSelector as e } from 'unocss'
+
 const defaultOption: Required<PresetScrollbarDefaultOption> = {
   scrollbarWidth: '8px',
   scrollbarHeight: '8px',
@@ -88,20 +88,25 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
 
   return {
     name: 'unocss-preset-scrollbar',
-    shortcuts: {
-      'scrollbar': `
-        overflow-auto
-        scrollbar-color-[var(${resolveVar('thumb')})_var(${resolveVar('track')})]
-        scrollbar-track:background-[var(${resolveVar('track')})]
-        scrollbar-thumb:background-[var(${resolveVar('thumb')})]
-        scrollbar:width-[var(${resolveVar('width')})]
-        scrollbar:height-[var(${resolveVar('height')})]
-      `,
-      'scrollbar-rounded': `
-        scrollbar-track:rounded-[var(${resolveVar('track-radius')})]
-        scrollbar-thumb:rounded-[var(${resolveVar('thumb-radius')})]
-      `,
-    },
+    shortcuts: [
+      [
+        'scrollbar', `
+          scrollbar-custom-property
+          overflow-auto
+          scrollbar-color-[var(${resolveVar('thumb')})_var(${resolveVar('track')})]
+          scrollbar-track:bg-[var(${resolveVar('track')})]
+          scrollbar-thumb:bg-[var(${resolveVar('thumb')})]
+          scrollbar:w-[var(${resolveVar('width')})]
+          scrollbar:h-[var(${resolveVar('height')})]
+        `,
+      ],
+      [
+        'scrollbar-rounded', `
+          scrollbar-track:rounded-[var(${resolveVar('track-radius')})]
+          scrollbar-thumb:rounded-[var(${resolveVar('thumb-radius')})]
+        `,
+      ],
+    ],
     variants: [
       // ::-webkit-scrollbar-track
       // ::-webkit-scrollbar-thumb
@@ -125,6 +130,17 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
         /^scrollbar-color-(.+)$/,
         ([_, prop]) => ({
           'scrollbar-color': handler.bracket.cssvar.auto.fraction.rem(prop),
+        }),
+      ],
+      [
+        /^scrollbar-custom-property$/,
+        ([_]) => ({
+          [resolveVar('track')]: config.scrollbarTrackColor,
+          [resolveVar('thumb')]: config.scrollbarThumbColor,
+          [resolveVar('width')]: config.scrollbarWidth,
+          [resolveVar('height')]: config.scrollbarHeight,
+          [resolveVar('track-radius')]: config.scrollbarTrackRadius,
+          [resolveVar('thumb-radius')]: config.scrollbarThumbRadius,
         }),
       ],
       [
