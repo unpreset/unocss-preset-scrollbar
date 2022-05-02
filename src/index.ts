@@ -1,6 +1,6 @@
 import type { Preset } from 'unocss'
-import { colorResolver } from '@unocss/preset-mini/utils'
-import { toEscapedSelector as e } from 'unocss'
+import { colorResolver, handler } from '@unocss/preset-mini/utils'
+
 const defaultOption: Required<PresetScrollbarDefaultOption> = {
   scrollbarWidth: '8px',
   scrollbarHeight: '8px',
@@ -84,69 +84,88 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
     return `--${prefix ? `${prefix}-` : ''}scrollbar-${name}`
   }
 
+  const variantsRE = /^(scrollbar(-track|-thumb)?):.+$/
+
   return {
     name: 'unocss-preset-scrollbar',
-    rules: [
-      [/^scrollbar$/, ([_], { rawSelector }) => {
-        return `
-  ${e(rawSelector)} {
-    ${resolveVar('track')}: ${config.scrollbarTrackColor};
-    ${resolveVar('thumb')}: ${config.scrollbarThumbColor};
-    ${resolveVar('width')}: ${config.scrollbarWidth};
-    ${resolveVar('height')}: ${config.scrollbarHeight};
-    ${resolveVar('track-radius')}: ${config.scrollbarTrackRadius};
-    ${resolveVar('thumb-radius')}: ${config.scrollbarThumbRadius};
-    overflow: auto;
-    scrollbar-color: var(${resolveVar('thumb')}) var(${resolveVar('track')});
-  }
-  ${e(rawSelector)}::-webkit-scrollbar-track {
-    background: var(${resolveVar('track')});
-  }
-  ${e(rawSelector)}::-webkit-scrollbar-thumb {
-    background: var(${resolveVar('thumb')});
-  }
-  ${e(rawSelector)}::-webkit-scrollbar {
-    width: var(${resolveVar('width')});
-    height: var(${resolveVar('height')});
-  }
-`
-      },
-      { autocomplete: 'scrollbar' },
+    shortcuts: [
+      [
+        'scrollbar', `
+          scrollbar-custom-property
+          overflow-auto
+          scrollbar-color-[var(${resolveVar('thumb')})_var(${resolveVar('track')})]
+          scrollbar-track:bg-[var(${resolveVar('track')})]
+          scrollbar-thumb:bg-[var(${resolveVar('thumb')})]
+          scrollbar:w-[var(${resolveVar('width')})]
+          scrollbar:h-[var(${resolveVar('height')})]
+        `,
       ],
-      [/^scrollbar-rounded$/, ([_], { rawSelector }) => {
-        return `
-  ${e(rawSelector)}::-webkit-scrollbar-track {
-    border-radius: var(${resolveVar('track-radius')});
-  }
-  ${e(rawSelector)}::-webkit-scrollbar-thumb {
-    border-radius: var(${resolveVar('thumb-radius')});
-  }
-`
-      }, { autocomplete: 'scrollbar-rounded' }],
-      [/^scrollbar-thumb-color-(.+)$/, colorResolver(resolveVar('thumb'), 'scrollbar-thumb'), { autocomplete: 'scrollbar-thumb-color-$colors' }],
-      [/^scrollbar-track-color-(.+)$/, colorResolver(resolveVar('track'), 'scrollbar-track'), { autocomplete: 'scrollbar-track-color-$colors' }],
-      [numberVarRegex, ([_, type, value, unit]) => {
-        const val = unit ? value + unit : config.numberToUnit(parseInt(value))
-        const vars = customRules[type as keyof typeof customRules]
-          .map(v => resolveVar(v))
-        return vars.reduce((acc: any, v) => {
-          acc[v] = val
-          return acc
-        }, {})
-      }, { autocomplete: `scrollbar-(${Object.keys(customRules).join('|')})-<num>` }],
+      [
+        'scrollbar-rounded', `
+          scrollbar-track:rounded-[var(${resolveVar('track-radius')})]
+          scrollbar-thumb:rounded-[var(${resolveVar('thumb-radius')})]
+        `,
+      ],
     ],
-    // autocomplete: {
-    //   templates: [async(input) => {
-    //     if (input.startsWith('scrollbar')) {
-    //       return [
-    //         ...Object.keys(customRules).map(v => `scrollbar-${v}`),
-    //         'scrollbar-rounded',
-    //       ]
-    //     }
-    //     return []
-    //   },
-    //   ],
+    variants: [
+      // ::-webkit-scrollbar-track
+      // ::-webkit-scrollbar-thumb
+      // ::-webkit-scrollbar
+      (matcher) => {
+        if (!variantsRE.test(matcher))
+          return
 
-    // },
+        const variant = matcher.replace(variantsRE, '$1')
+
+        return {
+          matcher: matcher.slice(variant.length + 1),
+          selector: (s) => {
+            return `${s}::-webkit-${variant}`
+          },
+        }
+      },
+    ],
+    rules: [
+      [
+        /^scrollbar-color-(.+)$/,
+        ([_, prop]) => ({
+          'scrollbar-color': handler.bracket.cssvar.auto.fraction.rem(prop),
+        }),
+      ],
+      [
+        /^scrollbar-custom-property$/,
+        ([_]) => ({
+          [resolveVar('track')]: config.scrollbarTrackColor,
+          [resolveVar('thumb')]: config.scrollbarThumbColor,
+          [resolveVar('width')]: config.scrollbarWidth,
+          [resolveVar('height')]: config.scrollbarHeight,
+          [resolveVar('track-radius')]: config.scrollbarTrackRadius,
+          [resolveVar('thumb-radius')]: config.scrollbarThumbRadius,
+        }),
+      ],
+      [
+        /^scrollbar-thumb-color-(.+)$/,
+        colorResolver(resolveVar('thumb'), 'scrollbar-thumb'),
+        { autocomplete: 'scrollbar-thumb-color-$colors' },
+      ],
+      [
+        /^scrollbar-track-color-(.+)$/,
+        colorResolver(resolveVar('track'), 'scrollbar-track'),
+        { autocomplete: 'scrollbar-track-color-$colors' },
+      ],
+      [
+        numberVarRegex,
+        ([_, type, value, unit]) => {
+          const val = unit ? value + unit : config.numberToUnit(parseInt(value))
+          const vars = customRules[type as keyof typeof customRules]
+            .map(v => resolveVar(v))
+          return vars.reduce((acc: any, v) => {
+            acc[v] = val
+            return acc
+          }, {})
+        },
+        { autocomplete: `scrollbar-(${Object.keys(customRules).join('|')})-<num>` },
+      ],
+    ],
   }
 }
