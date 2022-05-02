@@ -148,7 +148,8 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
             return acc
           }, {})
         },
-        { autocomplete: `scrollbar-(${Object.keys(customRules).join('|')})-<num>` }],
+        { autocomplete: `scrollbar-(${Object.keys(customRules).join('|')})-<num>` },
+      ],
     ],
   }
 }
