@@ -65,8 +65,7 @@ export default defineConfig({
 
 ```diff
 import { defineConfig, presetAttributify, presetUno, transformerDirectives } from 'unocss'
-
-import { presetScrollbar } from '../src'
+import { presetScrollbar } from 'unocss-preset-scrollbar'
 
 export default defineConfig({
   presets: [
