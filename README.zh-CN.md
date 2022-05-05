@@ -91,12 +91,12 @@ export default defineConfig({
 
 |配置项|默认值|说明|
 |--|--|--|
-|`scrollbarWidth`|`8px`|滚动条宽度|
-|`scrollbarHeight`|`8px`|滚动条高度|
-|`scrollbarTrackRadius`|`4px`|滚动条轨迹的圆角|
-|`scrollbarThumbRadius`|`4px`|滚动条滑块的圆角|
-|`scrollbarTrackColor`|`#f5f5f5`|滚动条轨迹的背景色|
-|`scrollbarThumbColor`|`#ddd`|滚动条滑块的背景色|
+|`scrollbarWidth`|`8px`|默认的滚动条宽度|
+|`scrollbarHeight`|`8px`|默认的滚动条高度|
+|`scrollbarTrackRadius`|`4px`|默认的滚动条轨迹的圆角|
+|`scrollbarThumbRadius`|`4px`|默认的滚动条滑块的圆角|
+|`scrollbarTrackColor`|`#f5f5f5`|默认的滚动条轨迹的背景色|
+|`scrollbarThumbColor`|`#ddd`|默认的滚动条滑块的背景色|
 |`numberToUnit`|``value => `${value / 4}rem` ``|捕获到的数字转化成单位的方法|
 |`varPrefix`|`''`|该预设生成的`css`变量的前缀| 
 

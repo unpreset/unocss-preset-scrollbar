@@ -91,12 +91,12 @@ export default defineConfig({
 
 |Field|Default|Description|
 |--|--|--|
-|`scrollbarWidth`|`8px`|scrollbar width|
-|`scrollbarHeight`|`8px`|scrollbar height|
-|`scrollbarTrackRadius`|`4px`|scrollbar track radius|
-|`scrollbarThumbRadius`|`4px`|scrollbar thumb radius|
-|`scrollbarTrackColor`|`#f5f5f5`| scrollbar track background color|
-|`scrollbarThumbColor`|`#ddd`| scrollbar thumb background color|
+|`scrollbarWidth`|`8px`|default scrollbar width|
+|`scrollbarHeight`|`8px`|default scrollbar height|
+|`scrollbarTrackRadius`|`4px`|default scrollbar track radius|
+|`scrollbarThumbRadius`|`4px`|default scrollbar thumb radius|
+|`scrollbarTrackColor`|`#f5f5f5`|default scrollbar track background color|
+|`scrollbarThumbColor`|`#ddd`|default scrollbar thumb background color|
 |`numberToUnit`|``value => `${value / 4}rem` ``| number to unit
 |`varPrefix`|`''`|the css variable prefix of this preset 
 

@@ -14,32 +14,32 @@ const defaultOption: Required<PresetScrollbarDefaultOption> = {
 
 export interface PresetScrollbarDefaultOption {
   /**
-   * scrollbar width
+   * default scrollbar width
    * @default '8px'
    */
   scrollbarWidth?: string
   /**
-   * scrollbar height
+   * default scrollbar height
    * @default '8px'
    */
   scrollbarHeight?: string
   /**
-   * scrollbar track radius
+   * default scrollbar track radius
    * @default '4px'
    */
   scrollbarTrackRadius?: string
   /**
-   * scrollbar thumb radius
+   * default scrollbar thumb radius
    * @default '4px'
    */
   scrollbarThumbRadius?: string
   /**
-   * scrollbar track background color
+   * default scrollbar track background color
    * @default '#f5f5f5'
    */
   scrollbarTrackColor?: string
   /**
-   * scrollbar thumb background color
+   * default scrollbar thumb background color
    * @default '#ddd'
    */
   scrollbarThumbColor?: string
