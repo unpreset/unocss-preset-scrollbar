@@ -1,6 +1,6 @@
 {
   "name": "unocss-preset-scrollbar",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "packageManager": "pnpm@6.32.3",
   "description": "unocss preset for scrollbar",
   "keywords": [
