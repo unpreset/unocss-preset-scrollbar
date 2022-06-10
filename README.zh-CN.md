@@ -133,7 +133,7 @@ export default defineConfig({
 
 ### 颜色
 
-`scrollbar-(track|thumb)-<color>`
+`scrollbar-(track|thumb)-color-<color>`
 
 设置轨迹或滑块的背景色
 
