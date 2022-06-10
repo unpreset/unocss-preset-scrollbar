@@ -133,7 +133,7 @@ Make thumb and track have rounded corners
 
 ### color
 
-`scrollbar-(track|thumb)-<color>`
+`scrollbar-(track|thumb)-color-<color>`
 
 set track or thumb background color
 
