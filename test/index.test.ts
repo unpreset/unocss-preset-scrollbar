@@ -121,7 +121,7 @@ describe('scrollbar', () => {
     `)
   })
 
-  it('preset prefix', async () => {
+  it('presetUno prefix', async () => {
     const generator = createGenerator({
       presets: [
         presetUno({
@@ -135,6 +135,22 @@ describe('scrollbar', () => {
       css,
     } = await generator.generate([
       'scrollbar',
+    ])
+    expect(css).toMatchSnapshot()
+  })
+
+  it('preset set prefix', async () => {
+    const generator = createGenerator({
+      presets: [
+        presetScrollbar({
+          prefix: 'un-',
+        }),
+      ],
+    }) 
+    const {
+      css,
+    } = await generator.generate([
+      'un-scrollbar',
     ])
     expect(css).toMatchSnapshot()
   })

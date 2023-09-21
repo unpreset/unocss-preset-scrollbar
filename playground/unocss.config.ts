@@ -10,6 +10,7 @@ export default defineConfig({
     presetAttributify(),
     presetScrollbar({
       varPrefix: 'un',
+      prefix: ['un', ''],
     }),
   ],
   transformers: [

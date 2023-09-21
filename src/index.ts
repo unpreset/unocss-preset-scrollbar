@@ -9,6 +9,7 @@ const defaultOption: Required<PresetScrollbarDefaultOption> = {
   scrollbarTrackColor: '#f5f5f5',
   scrollbarThumbColor: '#ddd',
   varPrefix: '',
+  prefix: '',
   numberToUnit: value => `${value / 4}rem`,
 }
 
@@ -43,6 +44,10 @@ export interface PresetScrollbarDefaultOption {
    * @default '#ddd'
    */
   scrollbarThumbColor?: string
+  /**
+   * Apply prefix to all utilities and shortcuts
+   */
+  prefix?: string | string[]
   /**
    * css variable prefix
    * @default ''
@@ -88,6 +93,7 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
 
   return {
     name: 'unocss-preset-scrollbar',
+    prefix: config.prefix,
     shortcuts: [
       [
         'scrollbar', [
