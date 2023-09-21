@@ -3,40 +3,41 @@
   "version": "0.2.1",
   "packageManager": "pnpm@8.7.6",
   "description": "unocss preset for scrollbar",
+  "author": "kkopite <kkopitehong@foxmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/action-hong/unocss-preset-scrollbar#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/action-hong/unocss-preset-scrollbar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/action-hong/unocss-preset-scrollbar/issues"
+  },
   "keywords": [
     "unocss",
     "unocss-preset",
     "scrollbar",
     "unocss-preset-scrollbar"
   ],
-  "homepage": "https://github.com/action-hong/unocss-preset-scrollbar#readme",
-  "bugs": {
-    "url": "https://github.com/action-hong/unocss-preset-scrollbar/issues"
-  },
-  "license": "MIT",
-  "author": "kkopite <kkopitehong@foxmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/action-hong/unocss-preset-scrollbar.git"
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
   "files": [
     "dist"
   ],
-  "sideEffects": false,
   "scripts": {
     "build": "rimraf dist && unbuild",
     "dev": "unbuild --stub",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepublishOnly": "nr build",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "start": "esno src/index.ts",
