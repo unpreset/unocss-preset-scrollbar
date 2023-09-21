@@ -4,7 +4,9 @@ import { presetScrollbar } from '../src'
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetUno({
+      prefix: 'tw-',
+    }),
     presetAttributify(),
     presetScrollbar({
       varPrefix: 'un',

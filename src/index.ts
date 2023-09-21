@@ -90,20 +90,20 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
     name: 'unocss-preset-scrollbar',
     shortcuts: [
       [
-        'scrollbar', `
-          scrollbar-custom-property
-          overflow-auto
-          scrollbar-color-[var(${resolveVar('thumb')})_var(${resolveVar('track')})]
-          scrollbar-track:bg-[var(${resolveVar('track')})]
-          scrollbar-thumb:bg-[var(${resolveVar('thumb')})]
-          scrollbar:w-[var(${resolveVar('width')})]
-          scrollbar:h-[var(${resolveVar('height')})]
-        `,
+        'scrollbar', [
+          { overflow: 'auto' },
+          'scrollbar-custom-property',
+          `scrollbar-color-[var(${resolveVar('thumb')})_var(${resolveVar('track')})]`,
+          `scrollbar-track:scrollbar-background-color-[var(${resolveVar('track')})]`,
+          `scrollbar-thumb:scrollbar-background-color-[var(${resolveVar('thumb')})]`,
+          `scrollbar:scrollbar-width-[var(${resolveVar('width')})]`,
+          `scrollbar:scrollbar-height-[var(${resolveVar('height')})]`,
+        ],
       ],
       [
         'scrollbar-rounded', `
-          scrollbar-track:rounded-[var(${resolveVar('track-radius')})]
-          scrollbar-thumb:rounded-[var(${resolveVar('thumb-radius')})]
+          scrollbar-track:scrollbar-border-radius-[var(${resolveVar('track-radius')})]
+          scrollbar-thumb:scrollbar-border-radius-[var(${resolveVar('thumb-radius')})]
         `,
       ],
     ],
@@ -154,9 +154,17 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
         { autocomplete: 'scrollbar-track-color-$colors' },
       ],
       [
+        /^scrollbar-(width|height|background\-color|border\-radius|)-(\[var.+\])$/,
+        ([_, prop, value]) => {
+          return {
+            [`${prop}`]: handler.bracket(value),
+          }
+        },
+      ],
+      [
         numberVarRegex,
         ([_, type, value, unit]) => {
-          const val = unit ? value + unit : config.numberToUnit(parseInt(value))
+          const val = unit ? value + unit : config.numberToUnit(Number.parseInt(value))
           const vars = customRules[type as keyof typeof customRules]
             .map(v => resolveVar(v))
           return vars.reduce((acc: any, v) => {

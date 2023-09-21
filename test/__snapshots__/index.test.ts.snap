@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`scrollbar > custom value to unit 1`] = `
 "/* layer: default */
@@ -6,14 +6,22 @@ exports[`scrollbar > custom value to unit 1`] = `
 .scrollbar-w-1{--scrollbar-width:2px;}"
 `;
 
+exports[`scrollbar > preset prefix 1`] = `
+"/* layer: shortcuts */
+.scrollbar{scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);--scrollbar-track:#f5f5f5;--scrollbar-thumb:#ddd;--scrollbar-width:8px;--scrollbar-height:8px;--scrollbar-track-radius:4px;--scrollbar-thumb-radius:4px;overflow:auto;}
+.scrollbar::-webkit-scrollbar{width:var(--scrollbar-width);height:var(--scrollbar-height);}
+.scrollbar::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb);}
+.scrollbar::-webkit-scrollbar-track{background-color:var(--scrollbar-track);}"
+`;
+
 exports[`scrollbar > scrollbar 1`] = `
 "/* layer: shortcuts */
+.scrollbar{scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);--scrollbar-track:#f5f5f5;--scrollbar-thumb:#ddd;--scrollbar-width:8px;--scrollbar-height:8px;--scrollbar-track-radius:4px;--scrollbar-thumb-radius:4px;overflow:auto;}
 .scrollbar::-webkit-scrollbar{width:var(--scrollbar-width);height:var(--scrollbar-height);}
-.scrollbar{overflow:auto;scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);--scrollbar-track:#f5f5f5;--scrollbar-thumb:#ddd;--scrollbar-width:8px;--scrollbar-height:8px;--scrollbar-track-radius:4px;--scrollbar-thumb-radius:4px;}
-.scrollbar-rounded::-webkit-scrollbar-thumb{border-radius:var(--scrollbar-thumb-radius);}
-.scrollbar-rounded::-webkit-scrollbar-track{border-radius:var(--scrollbar-track-radius);}
 .scrollbar::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb);}
 .scrollbar::-webkit-scrollbar-track{background-color:var(--scrollbar-track);}
+.scrollbar-rounded::-webkit-scrollbar-thumb{border-radius:var(--scrollbar-thumb-radius);}
+.scrollbar-rounded::-webkit-scrollbar-track{border-radius:var(--scrollbar-track-radius);}
 /* layer: default */
 .scrollbar-radius-2{--scrollbar-track-radius:0.5rem;--scrollbar-thumb-radius:0.5rem;}
 .scrollbar-w-4px{--scrollbar-width:4px;}"
@@ -29,30 +37,14 @@ exports[`scrollbar > scrollbar custom unit 1`] = `
 .scrollbar-w-1px{--scrollbar-width:1px;}"
 `;
 
-exports[`scrollbar > should provide autocomplete 1`] = `
-{
-  "sccrollbar-thumb-radius-": "",
-  "scrollbar-": "",
-  "scrollbar-radius-": "scrollbar-radius-0 scrollbar-radius-1 scrollbar-radius-2 scrollbar-radius-3 scrollbar-radius-4 scrollbar-radius-5 scrollbar-radius-6 scrollbar-radius-8 scrollbar-radius-10 scrollbar-radius-12",
-  "scrollbar-thumb-": "",
-  "scrollbar-thumb-color-": "scrollbar-thumb-color-amber scrollbar-thumb-color-black scrollbar-thumb-color-blue scrollbar-thumb-color-bluegray scrollbar-thumb-color-blueGray scrollbar-thumb-color-coolgray scrollbar-thumb-color-coolGray scrollbar-thumb-color-current scrollbar-thumb-color-cyan scrollbar-thumb-color-dark",
-  "scrollbar-track-color-": "scrollbar-track-color-amber scrollbar-track-color-black scrollbar-track-color-blue scrollbar-track-color-bluegray scrollbar-track-color-blueGray scrollbar-track-color-coolgray scrollbar-track-color-coolGray scrollbar-track-color-current scrollbar-track-color-cyan scrollbar-track-color-dark",
-  "scrollbar-w-": "scrollbar-w-0 scrollbar-w-1 scrollbar-w-2 scrollbar-w-3 scrollbar-w-4 scrollbar-w-5 scrollbar-w-6 scrollbar-w-8 scrollbar-w-10 scrollbar-w-12",
-}
-`;
-
 exports[`scrollbar > should work in atributify mode 1`] = `
 "/* layer: shortcuts */
-.scrollbar::-webkit-scrollbar,
+[scrollbar~=\\"\\\\~\\"]{scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);--scrollbar-track:#f5f5f5;--scrollbar-thumb:#ddd;--scrollbar-width:8px;--scrollbar-height:8px;--scrollbar-track-radius:4px;--scrollbar-thumb-radius:4px;overflow:auto;}
 [scrollbar~=\\"\\\\~\\"]::-webkit-scrollbar{width:var(--scrollbar-width);height:var(--scrollbar-height);}
-.scrollbar,
-[scrollbar~=\\"\\\\~\\"]{overflow:auto;scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);--scrollbar-track:#f5f5f5;--scrollbar-thumb:#ddd;--scrollbar-width:8px;--scrollbar-height:8px;--scrollbar-track-radius:4px;--scrollbar-thumb-radius:4px;}
+[scrollbar~=\\"\\\\~\\"]::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb);}
+[scrollbar~=\\"\\\\~\\"]::-webkit-scrollbar-track{background-color:var(--scrollbar-track);}
 [scrollbar~=\\"rounded\\"]::-webkit-scrollbar-thumb{border-radius:var(--scrollbar-thumb-radius);}
 [scrollbar~=\\"rounded\\"]::-webkit-scrollbar-track{border-radius:var(--scrollbar-track-radius);}
-.scrollbar::-webkit-scrollbar-thumb,
-[scrollbar~=\\"\\\\~\\"]::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb);}
-.scrollbar::-webkit-scrollbar-track,
-[scrollbar~=\\"\\\\~\\"]::-webkit-scrollbar-track{background-color:var(--scrollbar-track);}
 /* layer: default */
 .w-4px{width:4px;}
 .rounded{border-radius:0.25rem;}
@@ -60,27 +52,14 @@ exports[`scrollbar > should work in atributify mode 1`] = `
 [scrollbar~=\\"w-4px\\"]{--scrollbar-width:4px;}"
 `;
 
-exports[`scrollbar > use @apply 1`] = `
-"/* layer: shortcuts */
-.scrollbar::-webkit-scrollbar{width:var(--scrollbar-width);height:var(--scrollbar-height);}
-.scrollbar{overflow:auto;scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);--scrollbar-track:#f5f5f5;--scrollbar-thumb:#ddd;--scrollbar-width:8px;--scrollbar-height:8px;--scrollbar-track-radius:4px;--scrollbar-thumb-radius:4px;}
-.scrollbar-rounded::-webkit-scrollbar-thumb{border-radius:var(--scrollbar-thumb-radius);}
-.scrollbar-rounded::-webkit-scrollbar-track{border-radius:var(--scrollbar-track-radius);}
-.scrollbar::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb);}
-.scrollbar::-webkit-scrollbar-track{background-color:var(--scrollbar-track);}
-/* layer: default */
-.scrollbar-radius-2{--scrollbar-track-radius:0.5rem;--scrollbar-thumb-radius:0.5rem;}
-.scrollbar-w-4px{--scrollbar-width:4px;}"
-`;
-
 exports[`scrollbar > var prefix 1`] = `
 "/* layer: shortcuts */
+.scrollbar{scrollbar-color:var(--my-custom-prefix-scrollbar-thumb) var(--my-custom-prefix-scrollbar-track);--my-custom-prefix-scrollbar-track:#f5f5f5;--my-custom-prefix-scrollbar-thumb:#ddd;--my-custom-prefix-scrollbar-width:8px;--my-custom-prefix-scrollbar-height:8px;--my-custom-prefix-scrollbar-track-radius:4px;--my-custom-prefix-scrollbar-thumb-radius:4px;overflow:auto;}
 .scrollbar::-webkit-scrollbar{width:var(--my-custom-prefix-scrollbar-width);height:var(--my-custom-prefix-scrollbar-height);}
-.scrollbar{overflow:auto;scrollbar-color:var(--my-custom-prefix-scrollbar-thumb) var(--my-custom-prefix-scrollbar-track);--my-custom-prefix-scrollbar-track:#f5f5f5;--my-custom-prefix-scrollbar-thumb:#ddd;--my-custom-prefix-scrollbar-width:8px;--my-custom-prefix-scrollbar-height:8px;--my-custom-prefix-scrollbar-track-radius:4px;--my-custom-prefix-scrollbar-thumb-radius:4px;}
-.scrollbar-rounded::-webkit-scrollbar-thumb{border-radius:var(--my-custom-prefix-scrollbar-thumb-radius);}
-.scrollbar-rounded::-webkit-scrollbar-track{border-radius:var(--my-custom-prefix-scrollbar-track-radius);}
 .scrollbar::-webkit-scrollbar-thumb{background-color:var(--my-custom-prefix-scrollbar-thumb);}
 .scrollbar::-webkit-scrollbar-track{background-color:var(--my-custom-prefix-scrollbar-track);}
+.scrollbar-rounded::-webkit-scrollbar-thumb{border-radius:var(--my-custom-prefix-scrollbar-thumb-radius);}
+.scrollbar-rounded::-webkit-scrollbar-track{border-radius:var(--my-custom-prefix-scrollbar-track-radius);}
 /* layer: default */
 .scrollbar-thumb-radius-2px{--my-custom-prefix-scrollbar-thumb-radius:2px;}
 .scrollbar-w-1{--my-custom-prefix-scrollbar-width:0.25rem;}"
