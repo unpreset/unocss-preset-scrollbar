@@ -97,7 +97,8 @@ export default defineConfig({
 |`scrollbarTrackColor`|`#f5f5f5`|default scrollbar track background color|
 |`scrollbarThumbColor`|`#ddd`|default scrollbar thumb background color|
 |`numberToUnit`|``value => `${value / 4}rem` ``| number to unit
-|`varPrefix`|`''`|the css variable prefix of this preset 
+|`varPrefix`|`''`|the css variable prefix of this preset|
+|`prefix`|`''`|Apply prefix to all utilities and shortcuts|
 
 
 for example
