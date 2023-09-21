@@ -98,6 +98,7 @@ export default defineConfig({
 |`scrollbarThumbColor`|`#ddd`|默认的滚动条滑块的背景色|
 |`numberToUnit`|``value => `${value / 4}rem` ``|捕获到的数字转化成单位的方法|
 |`varPrefix`|`''`|该预设生成的`css`变量的前缀| 
+|`prefix`|`''`|该预设生成的shortcuts加上前缀|
 
 
 举个例子
