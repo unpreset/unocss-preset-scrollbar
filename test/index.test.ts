@@ -111,7 +111,7 @@ describe('scrollbar', () => {
     ).toMatchInlineSnapshot(`
       {
         "sccrollbar-thumb-radius-": "",
-        "scrollbar-": "scrollbar-rounded scrollbar-track-color-red scrollbar-w-4px scrollbar-radius-2 scrollbar-w-1px",
+        "scrollbar-": "scrollbar-none scrollbar-rounded scrollbar-thin scrollbar-track-color-red scrollbar-w-4px scrollbar-radius-2 scrollbar-w-1px",
         "scrollbar-radius-": "scrollbar-radius-2 scrollbar-radius-0 scrollbar-radius-1 scrollbar-radius-3 scrollbar-radius-4 scrollbar-radius-5 scrollbar-radius-6 scrollbar-radius-8 scrollbar-radius-10 scrollbar-radius-12",
         "scrollbar-thumb-": "",
         "scrollbar-thumb-color-": "scrollbar-thumb-color-amber scrollbar-thumb-color-black scrollbar-thumb-color-blue scrollbar-thumb-color-bluegray scrollbar-thumb-color-blueGray scrollbar-thumb-color-coolgray scrollbar-thumb-color-coolGray scrollbar-thumb-color-current scrollbar-thumb-color-cyan scrollbar-thumb-color-dark",
