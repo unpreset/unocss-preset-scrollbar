@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/unocss-preset-scrollbar?color=a1b858&label=)](https://www.npmjs.com/package/unocss-preset-scrollbar) ![npm](https://img.shields.io/npm/dw/unocss-preset-scrollbar)
 
-a [unocss](https://github.com/unocss/unocss) preset for scrollbar，here is a [demo](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=src/components/HelloWorld.vue)
+a [unocss](https://github.com/unocss/unocss) preset for scrollbar，here is a [demo](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=index.html)
 
 English | [简体中文](./README.zh-CN.md)
 
