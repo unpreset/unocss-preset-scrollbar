@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/unocss-preset-scrollbar?color=a1b858&label=)](https://www.npmjs.com/package/unocss-preset-scrollbar) ![npm](https://img.shields.io/npm/dw/unocss-preset-scrollbar)
 
-a [unocss](https://github.com/unocss/unocss) preset for scrollbar, here is a [demo](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=src/components/HelloWorld.vue)
+a [unocss](https://github.com/unocss/unocss) preset for scrollbar，here is a [demo](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=src/components/HelloWorld.vue)
 
 English | [简体中文](./README.zh-CN.md)
 
@@ -36,7 +36,7 @@ export default defineConfig({
 />
 ```
 
-it will generate below css:
+it will generate below css：
 
 ```css
 /* layer: shortcuts */
@@ -53,7 +53,7 @@ it will generate below css:
 .scrollbar-w-4px{--scrollbar-width:4px;}
 ```
 
-you can also use [`Attributify Mode`](https://github.com/unocss/unocss/tree/main/packages/preset-attributify):
+you can also use [`Attributify Mode`](https://github.com/unocss/unocss/tree/main/packages/preset-attributify)：
 
 ```html
 <div
@@ -99,6 +99,7 @@ export default defineConfig({
 |`numberToUnit`|``value => `${value / 4}rem` ``| number to unit
 |`varPrefix`|`''`|the css variable prefix of this preset|
 |`prefix`|`''`|Apply prefix to all utilities and shortcuts|
+|`noCompatible`|`'true'`|if `false`, it use `scrollbar-width` and `scrollbar-color`，work in Firefox, but `scrollbar-h`, `scrollbar-w` and `scrollbar-radius` will not work |
 
 
 for example
@@ -107,9 +108,9 @@ for example
 <div class="scrollbar scrollbar-w-4">
 ```
 
-if we use default options, `scrollbar-w-4` will generate `--scrollbar-width: 1rem`
+if we use default options，`scrollbar-w-4` will generate `--scrollbar-width: 1rem`
 
-if we set custom `numberToUnit`:
+if we set custom `numberToUnit`：
 
 ```ts
 export default defineConfig({
@@ -125,6 +126,30 @@ export default defineConfig({
 will generate `--scrollbar-width: 4px`
 
 ## Utilities
+
+### scrollbar
+
+`scrollbar-thin`
+
+```css
+.scrollbar-thin {
+  scrollbar-width: thin; // if noCompatible is true, remove this line
+  --un-scrollbar-width: 8px;
+  --un-scrollbar-height: 8px;
+}
+```
+
+`scrollbar-none`
+
+```css
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display:none;
+}
+```
 
 ### rounded
 
@@ -150,12 +175,16 @@ set track or thumb background color
 |track-radius|set track radius|
 |thumb-radius|set thumb radius|
 
-**Attention,** if it ends with number, the preset will use numberToUnit to generate length with number as params, Otherwise it will use the captured length information directly
+**Attention，**if it ends with number，the preset will use numberToUnit to generate length with number as params，Otherwise it will use the captured length information directly
 
-for example:
+for example：
 - `scrollbar-w-4` will be `--scrollbar-width: 1rem`
 - `scrollbar-w-4px` will be `--scrollbar-width: 4px`
 - `scrollbar-w-4rem` will be `--scrollbar-width: 4rem`
+
+::: warning
+if set `noCompatible` value `false`，it not work
+:::
 
 ## other
 

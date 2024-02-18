@@ -11,6 +11,7 @@ const defaultOption: Required<PresetScrollbarDefaultOption> = {
   varPrefix: '',
   prefix: '',
   numberToUnit: value => `${value / 4}rem`,
+  noCompatible: true,
 }
 
 export interface PresetScrollbarDefaultOption {
@@ -66,6 +67,14 @@ export interface PresetScrollbarDefaultOption {
    * p-4 => padding: 4rpx
    */
   numberToUnit?: (value: number) => string
+
+  /**
+   * if false will use scrollbar-color and scrollbar-width, rounded and scrollbar-w, scrollbar-h and scrollbar-radius will not work
+   * if true, won't have any effect in Firefox
+   * 
+   * @default true
+   */
+  noCompatible?: boolean
 }
 
 const customRules = {
@@ -99,6 +108,7 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
         'scrollbar', [
           { overflow: 'auto' },
           'scrollbar-custom-property',
+          'scrollbar-width-auto',
           `scrollbar-color-[var(${resolveVar('thumb')})_var(${resolveVar('track')})]`,
           `scrollbar-track:scrollbar-background-color-[var(${resolveVar('track')})]`,
           `scrollbar-thumb:scrollbar-background-color-[var(${resolveVar('thumb')})]`,
@@ -110,6 +120,19 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
         'scrollbar-rounded', `
           scrollbar-track:scrollbar-border-radius-[var(${resolveVar('track-radius')})]
           scrollbar-thumb:scrollbar-border-radius-[var(${resolveVar('thumb-radius')})]
+        `,
+      ],
+      [
+        'scrollbar-thin', `
+          scrollbar-w-8px
+          scrollbar-h-8px
+          scrollbar-width-thin
+        `,
+      ],
+      [
+        'scrollbar-none', `
+          scrollbar:hidden
+          scrollbar-width-none
         `,
       ],
     ],
@@ -134,9 +157,25 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
     rules: [
       [
         /^scrollbar-color-(.+)$/,
-        ([_, prop]) => ({
-          'scrollbar-color': handler.bracket.cssvar.auto.fraction.rem(prop),
-        }),
+        ([_, prop]) => {
+          if (config.noCompatible) 
+            return {}
+          
+          // when use scrollbar-color, ::-webkit-scrollbar styling is disabled.
+          // https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar
+          return {
+            'scrollbar-color': handler.bracket.cssvar.auto.fraction.rem(prop),
+          }
+        },
+      ],
+      [
+        /^scrollbar-width-(auto|thin|none)/,
+        ([_, prop]) => {
+          const res: Record<string, string> = {}
+          if (!config.noCompatible || prop === 'none') 
+            res['scrollbar-width'] = prop
+          return res
+        },
       ],
       [
         /^scrollbar-custom-property$/,
@@ -179,6 +218,10 @@ export function presetScrollbar(option?: PresetScrollbarDefaultOption): Preset {
           }, {})
         },
         { autocomplete: `scrollbar-(${Object.keys(customRules).join('|')})-<num>` },
+      ],
+      [
+        'hidden',
+        { display: 'none' },
       ],
     ],
   }

@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/unocss-preset-scrollbar?color=a1b858&label=)](https://www.npmjs.com/package/unocss-preset-scrollbar) ![npm](https://img.shields.io/npm/dw/unocss-preset-scrollbar)
 
-[`unocss`](https://github.com/unocss/unocss)的滚动预设, [一个简单的实例](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=src/components/HelloWorld.vue)
+[`unocss`](https://github.com/unocss/unocss) 的滚动预设，[一个简单的实例](https://stackblitz.com/edit/vitejs-vite-gyun7j?file=src/components/HelloWorld.vue)
 
 简体中文 | [English](./README.md)
 
@@ -36,7 +36,7 @@ export default defineConfig({
 />
 ```
 
-上述代码将生成如下的css代码：
+上述代码将生成如下的 css 代码：
 
 ```css
 /* layer: shortcuts */
@@ -53,7 +53,7 @@ export default defineConfig({
 .scrollbar-w-4px{--scrollbar-width:4px;}
 ```
 
-你也可以使用[`Attributify Mode`](https://github.com/unocss/unocss/tree/main/packages/preset-attributify)：
+你也可以使用 [`Attributify Mode`](https://github.com/unocss/unocss/tree/main/packages/preset-attributify)：
 
 ```html
 <div
@@ -99,6 +99,7 @@ export default defineConfig({
 |`numberToUnit`|``value => `${value / 4}rem` ``|捕获到的数字转化成单位的方法|
 |`varPrefix`|`''`|该预设生成的`css`变量的前缀| 
 |`prefix`|`''`|该预设生成的shortcuts加上前缀|
+|`noCompatible`|`'true'`|如果为 `false` 的话 会使用 `scrollbar-width` 和 `scrollbar-color` 这两个规则，能够在Firefox上兼容, 但是`scrollbar-h`、`scrollbar-w` 以及 `scrollbar-raidus` 会失效 |
 
 
 举个例子
@@ -107,9 +108,9 @@ export default defineConfig({
 <div class="scrollbar scrollbar-w-4">
 ```
 
-如果你使用默认的配置, `scrollbar-w-4` 将会转化成 `--scrollbar-width: 1rem`
+如果你使用默认的配置，`scrollbar-w-4` 将会转化成 `--scrollbar-width: 1rem`
 
-而如果你自定义`numberToUnit`项:
+而如果你自定义 `numberToUnit` 项：
 
 ```ts
 export default defineConfig({
@@ -125,6 +126,30 @@ export default defineConfig({
 将转化成 `--scrollbar-width: 4px`
 
 ## 规则
+
+### scrollbar
+
+`scrollbar-thin`
+
+```css
+.scrollbar-thin {
+  scrollbar-width: thin; // 如果 noCompatible 为 true, 则不会生成该行
+  --un-scrollbar-width: 8px;
+  --un-scrollbar-height: 8px;
+}
+```
+
+`scrollbar-none`
+
+```css
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display:none;
+}
+```
 
 ### rounded
 
@@ -150,11 +175,11 @@ export default defineConfig({
 |track-radius|设置轨迹圆角|
 |thumb-radius|设置滑块圆角|
 
-> **注意** 如果以数字结尾，则会通过`numberToUnit`转化成带有单位的长度，反之直接生成对应的单位长度。
+> **注意**如果以数字结尾，则会通过 `numberToUnit` 转化成带有单位的长度，反之直接生成对应的单位长度。
 
-> **注意** 想要设置滚动条的圆角，必须先使用`scrollbar-rounded`
+> **注意**想要设置滚动条的圆角，必须先使用 `scrollbar-rounded`
 
-例如:
+例如：
 - `scrollbar-w-4` -> `--scrollbar-width: 1rem`
 - `scrollbar-w-4px` -> `--scrollbar-width: 4px`
 - `scrollbar-w-4rem` -> `--scrollbar-width: 4rem`

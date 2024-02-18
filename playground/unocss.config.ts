@@ -11,6 +11,7 @@ export default defineConfig({
     presetScrollbar({
       varPrefix: 'un',
       prefix: ['un', ''],
+      noCompatible: false,
     }),
   ],
   transformers: [
